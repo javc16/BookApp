@@ -1,0 +1,51 @@
+<div class="flex-container center-center">
+  <h1>Create Book</h1>
+</div>
+
+<form class="form" [formGroup]="registerBook" (ngSubmit)="onSubmit()">
+<tr></tr>
+<div class="field">
+  <label>Name: </label><tr></tr>
+  <input name="name" type="text" class="form-control" formControlName="name"
+  [class.invalid]="
+  registerBook.get('name')?.invalid &&
+  (registerBook.get('name')?.dirty ||
+  registerBook.get('name')?.touched || isSubmitted)">
+
+  <span *ngIf="registerBook.get('name')?.hasError('required') &&
+  (registerBook.get('name')?.dirty ||
+  registerBook.get('name')?.touched || isSubmitted)"
+  class="error"
+  >Required field</span>
+</div>
+<tr></tr>
+<div class="field">
+  <label># Pages: </label><tr></tr>
+  <input name="pages" type="number" class="form-control" formControlName="pages"
+  [class.invalid]="
+  registerBook.get('pages')?.invalid &&
+  (registerBook.get('pages')?.dirty ||
+  registerBook.get('pages')?.touched || isSubmitted)">
+
+<span *ngIf="registerBook.get('pages')?.hasError('required') &&
+(registerBook.get('pages')?.dirty ||
+registerBook.get('pages')?.touched || isSubmitted)"
+class="error"
+>Required field</span>
+</div>
+<tr></tr>
+<div class="field">
+  <label>Publication Date: </label><tr></tr>
+  <input name="publicationDate" type="date" class="form-control" formControlName="publicationDate">
+</div>
+<div class="flex-container center-center">
+  <mat-card-actions>
+      <button mat-raised-button color="primary" class="marginButton" mattooltip="df" type="submit">
+          <i class='fa fa-save fa-fw'></i> Save
+      </button>
+      <button mat-raised-button color="warn" mattooltip="df" type="button" (click)="cancel()">
+          <i class='fa fa-times fa-fw'></i> Cancel
+      </button>
+  </mat-card-actions>
+</div>
+</form>
