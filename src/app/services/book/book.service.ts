@@ -21,4 +21,16 @@ export class BookService {
   create(book: Object) {
     return this.http.post(this.url, book);
   }
+
+  update(id: number, book:Object ){
+    return this.http.put(this.url+'/'+id, book);
+  }
+
+  getById(id: number){
+    return this.http.get<book>(this.url+'/' +id);
+  }
+
+  delete(id: number ){
+    return this.http.delete(this.url+'/'+id);
+  }
 }

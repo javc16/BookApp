@@ -10,12 +10,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateBookComponent } from './components/create-book/create-book.component';
 import { HomeComponent } from './components/home/home.component';
+import { EditBookComponent } from './edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CreateBookComponent
+    CreateBookComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,

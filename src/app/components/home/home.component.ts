@@ -10,7 +10,7 @@ import { BookService } from '../../services/book/book.service';
 })
 export class HomeComponent {
   books: book[];
-  displayedColumns: string[] = ['id','name','pages','publicationDate'];
+  displayedColumns: string[] = ['id','name','pages','publicationDate','action'];
   constructor(
     private bookService: BookService,
     private router: Router,
@@ -28,4 +28,21 @@ export class HomeComponent {
     create(){
       this.router.navigate(['create']);
     }
+
+    edit(book:book){
+      const id = book.id;
+      this.router.navigate(['edit',id]);
+    }
+
+
+
+    delete(book:book) {
+       this.bookService.delete(book.id)
+         .subscribe((res: any) => {
+           this.bookService.getData().subscribe((res: any[])=>{
+             this.books= res;
+           })
+         });
+    }
+
 }

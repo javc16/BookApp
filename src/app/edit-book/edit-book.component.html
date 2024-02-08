@@ -1,0 +1,71 @@
+<div class="flex-container center-center">
+  <h1>Create Book</h1>
+</div>
+
+<form class="form" [formGroup]="registeredBook" (ngSubmit)="onSubmit()">
+<tr></tr>
+<div class="field">
+  <label>Id: </label><tr></tr>
+  <input name="id" type="number" class="form-control" formControlName="id"
+  [class.invalid]="
+  registeredBook.get('id')?.invalid &&
+  (registeredBook.get('id')?.dirty ||
+  registeredBook.get('id')?.touched || isSubmitted)" readonly
+  style="background-color: #e9ecef;">
+
+  <span *ngIf="registeredBook.get('id')?.hasError('required') &&
+  (registeredBook.get('id')?.dirty ||
+  registeredBook.get('id')?.touched || isSubmitted)"
+  class="error"
+  >Required field</span>
+</div>
+
+<div class="field">
+  <label>Name: </label><tr></tr>
+  <input name="name" type="text" class="form-control" formControlName="name"
+  [class.invalid]="
+  registeredBook.get('name')?.invalid &&
+  (registeredBook.get('name')?.dirty ||
+  registeredBook.get('name')?.touched || isSubmitted)">
+
+  <span *ngIf="registeredBook.get('name')?.hasError('required') &&
+  (registeredBook.get('name')?.dirty ||
+  registeredBook.get('name')?.touched || isSubmitted)"
+  class="error"
+  >Required field</span>
+</div>
+<tr></tr>
+<div class="field">
+  <label># Pages: </label><tr></tr>
+  <input name="pages" type="number" class="form-control" formControlName="pages"
+  [class.invalid]="
+  registeredBook.get('pages')?.invalid &&
+  (registeredBook.get('pages')?.dirty ||
+  registeredBook.get('pages')?.touched || isSubmitted)">
+
+<span *ngIf="registeredBook.get('pages')?.hasError('required') &&
+(registeredBook.get('pages')?.dirty ||
+registeredBook.get('pages')?.touched || isSubmitted)"
+class="error"
+>Required field</span>
+</div>
+<tr></tr>
+<div class="field">
+  <label>Publication Date: </label><tr></tr>
+  <input name="publicationDate" type="date" class="form-control" formControlName="publicationDate"
+  [class.invalid]="
+  registeredBook.get('publicationDate')?.invalid &&
+  (registeredBook.get('publicationDate')?.dirty ||
+  registeredBook.get('publicationDate')?.touched || isSubmitted)">
+</div>
+<div class="flex-container center-center">
+  <mat-card-actions>
+      <button mat-raised-button color="primary" class="marginButton" mattooltip="df" type="submit">
+          <i class='fa fa-save fa-fw'></i> Save
+      </button>
+      <button mat-raised-button color="warn" mattooltip="df" type="button" (click)="cancel()">
+          <i class='fa fa-times fa-fw'></i> Cancel
+      </button>
+  </mat-card-actions>
+</div>
+</form>
